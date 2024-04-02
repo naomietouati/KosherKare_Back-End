@@ -1,0 +1,99 @@
+ERROR - 2024-02-07 11:46:30 --> mysqli_sql_exception: Champ 'login' inconnu dans where clause in C:\wamp64\www\KosherKare\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\KosherKare\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\KosherKare\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\KosherKare\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\KosherKare\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\KosherKare\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\KosherKare\system\BaseModel.php(577): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\wamp64\www\KosherKare\app\Controllers\user.php(16): CodeIgniter\BaseModel->find()
+#7 C:\wamp64\www\KosherKare\system\CodeIgniter.php(941): App\Controllers\user->connection()
+#8 C:\wamp64\www\KosherKare\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\user))
+#9 C:\wamp64\www\KosherKare\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\KosherKare\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\KosherKare\system\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\K...')
+#12 {main}
+CRITICAL - 2024-02-07 11:46:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Champ 'login' inconnu dans where clause
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login` = :login:
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(577): CodeIgniter\Model->doFind(false, null)
+ 4 APPPATH\Controllers\user.php(16): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\user->connection()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\user))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KosherKare\\public\\index.php')
+CRITICAL - 2024-02-07 11:46:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Champ 'login' inconnu dans where clause
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `login` = \'naomietouati22@gmail.com\'
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `login` = \'naomietouati22@gmail.com\'
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login` = :login:
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(577): CodeIgniter\Model->doFind(false, null)
+ 6 APPPATH\Controllers\user.php(16): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\user->connection()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\user))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KosherKare\\public\\index.php')
+CRITICAL - 2024-02-07 11:46:30 --> [Caused by] mysqli_sql_exception: Champ 'login' inconnu dans where clause
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `users`
+WHERE `login` = \'naomietouati22@gmail.com\'
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `login` = \'naomietouati22@gmail.com\'
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `login` = \'naomietouati22@gmail.com\'
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login` = :login:
+AND `password` IS NULL
+AND `users`.`deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(577): CodeIgniter\Model->doFind(false, null)
+ 7 APPPATH\Controllers\user.php(16): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\user->connection()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\user))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KosherKare\\public\\index.php')
+CRITICAL - 2024-02-07 11:57:57 --> Error: Call to a member function where() on null
+in APPPATH\Controllers\user.php on line 16.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\user->connection()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\user))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KosherKare\\public\\index.php')
+CRITICAL - 2024-02-07 11:58:03 --> Error: Call to a member function where() on null
+in APPPATH\Controllers\user.php on line 16.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\user->connection()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\user))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\wamp64\\www\\KosherKare\\public\\index.php')
