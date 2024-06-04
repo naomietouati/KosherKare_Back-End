@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 $routes->post('/user/connection', 'user::connection');
 $routes->post('/user/registration', 'user::registration');
 $routes->post('/meal/MealGeneration', 'meal::MealGeneration');
+$routes->post('/EatingsHabits/initialization', 'EatingsHabits::initialization'  /*,['filter' => 'authFilter'] */);
 
 /*
 $routes->group("api", function ($routes) {

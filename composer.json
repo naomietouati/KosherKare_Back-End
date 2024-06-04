@@ -14,8 +14,9 @@
         "ext-intl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "firebase/php-jwt": "6.4",
+        "firebase/php-jwt": "^6.10",
         "laminas/laminas-escaper": "^2.9",
+        "paragonie/sodium_compat": "^2.0",
         "psr/log": "^1.1"
     },
     "require-dev": {

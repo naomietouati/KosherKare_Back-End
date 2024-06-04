@@ -27,17 +27,18 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $key = getenv('JWT_SECRET');
-        $header = $request->header("Authorization");
-        $token = null;
+        $key = 'Le0dgWVBRMMfeZu5Gu485XB2rHjaU/5p6s/lOSrcXOM'; 
+        $authHeader = $request->header('Authorization');
+        $token = $authHeader->getValue();
+        
   
         // extract the token from the header
-        if(!empty($header)) {
+       /* if(!empty($header)) {
             if (preg_match('/Bearer\s(\S+)/', $header, $matches)) {
                 $token = $matches[1];
             }
         }
-  
+  */
         // check if token is null or empty
         if(is_null($token) || empty($token)) {
             $response = service('response');
@@ -47,8 +48,9 @@ class AuthFilter implements FilterInterface
         }
   
         try {
-            // $decoded = JWT::decode($token, $key, array("HS256"));
+            //$decoded = JWT::decode($token, $key, "HS256");
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            return $decoded;
         } catch (\Exception $ex) {
             $response = service('response');
             $response->setBody('Access denied');
