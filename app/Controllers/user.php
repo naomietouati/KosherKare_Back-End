@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Models\EatingHabitsModel;
 use App\Models\UserModel;
 use \Firebase\JWT\JWT;
 
@@ -11,18 +11,15 @@ class User extends BaseController
     {
         $userModel = new UserModel();
         $login = $this->request->getVar('username');
-        $password = $this->request->getVar('password'); //mdp saisit
-    
-        $user = $userModel->where('email_address', $login)->first(); // verification du login
+        $password = $this->request->getVar('password');
+        $user = $userModel->where('email_address', $login)->first(); 
+        $user_id = $user['id_users'];
     
         if ($user) {
-
-            if (password_verify($password, $user['password'])) { //fonction qui hache le mdp saisi
-                //suite si mdp est correct 
-                $key = 'Le0dgWVBRMMfeZu5Gu485XB2rHjaU/5p6s/lOSrcXOM='; //token 
-                $iat = time(); //fonction qui me renvoie l'heure
-                $exp = $iat + 3600; //Expiration time 
-         
+            if (password_verify($password, $user['password'])) { 
+                $key = 'Le0dgWVBRMMfeZu5Gu485XB2rHjaU/5p6s/lOSrcXOM'; 
+                $iat = time();
+                $exp = $iat + 3600; 
                 $payload = array(
                     "iss" => "Issuer of the JWT",
                     "aud" => "Audience that the JWT",
@@ -33,9 +30,11 @@ class User extends BaseController
                 );
                  
                 $token = JWT::encode($payload, $key, 'HS256');
-                $token=$key;
-         
-                $response = ['code' => 200, 'success' => true, 'message' => 'User logged in successfully','token' => $token];
+                $eatingHabitsModel = new EatingHabitsModel();
+                $eatingHabitsUser = $eatingHabitsModel->where( ['id_users' => $user_id]) -> find();
+                $eatingHabitsUser = count($eatingHabitsUser) == 0 ? null : $eatingHabitsUser ;
+        
+                $response = ['code' => 200, 'success' => true, 'message' => 'User logged in successfully','token' => $token, 'hasEatingHabits' => $eatingHabitsUser];
             } else {
                 $response = ['code' => 200, 'success' => false, 'message' => 'Invalid login credentials'];
             }
@@ -62,7 +61,6 @@ class User extends BaseController
         if ($userExists) {
             $response = ['code' => 200, 'success' => false, 'message' => 'Email already exists'];
         } else {
-            // Hash du mot de passe
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             $data = [
@@ -102,4 +100,12 @@ class User extends BaseController
 
         return json_encode($response);
     }
+
+
+    public function profile(){
+
+    }
+
+
+
 }
